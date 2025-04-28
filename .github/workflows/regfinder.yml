@@ -13,15 +13,17 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
+    - name: Create tools directory in /tmp
+      run: mkdir /tmp/tools
+
     - name: Download regfinder binary
       run: |
-        wget https://github.com/matejsmycka/regfinder/raw/main/build/regfinder.elf
-        chmod +x ./regfinder.elf
+        wget -O /tmp/tools/regfinder.elf https://github.com/matejsmycka/regfinder/raw/main/build/regfinder.elf
+        chmod +x /tmp/tools/regfinder.elf
 
     - name: Download general.txt regex file
-      run: |
-        wget https://raw.githubusercontent.com/matejsmycka/regfinder/main/regex_dir/general.txt
+      run: wget -O /tmp/tools/general.txt https://raw.githubusercontent.com/matejsmycka/regfinder/main/regex_dir/general.txt
 
     - name: Run RegFinder
       run: |
-        ./regfinder.elf -d . -f general.txt
+        /tmp/tools/regfinder.elf -d . -f /tmp/tools/general.txt
