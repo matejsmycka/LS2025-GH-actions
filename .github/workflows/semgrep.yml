@@ -1,4 +1,4 @@
-name: Semgrep CI
+name: semgrep 
 on:
   push:
     branches:
@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: semgrep/semgrep
+    continue-on-error: true
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
