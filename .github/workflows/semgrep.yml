@@ -13,4 +13,4 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
       - name: Run Semgrep scan
-        run: semgrep scan . --config "python" --metrics=off
+        run: semgrep scan . --config "p/python" --metrics=off
