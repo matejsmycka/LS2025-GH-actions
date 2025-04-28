@@ -1,0 +1,11 @@
+name: Semgrep CI
+jobs:
+  semgrep:
+    runs-on: ubuntu-latest
+    container:
+      image: semgrep/semgrep
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Run Semgrep scan
+        run: semgrep scan . --config "python" --metrics=off
